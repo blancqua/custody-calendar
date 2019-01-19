@@ -81,7 +81,7 @@ public final class LenaCalendarGenerator {
     }
 
     private List<DaySchedule> daySchedulesIn(final int year) {
-        return LocalDate.of(2019, JANUARY, 1).datesUntil(LocalDate.of(year + 1, JANUARY, 1))
+        return LocalDate.of(year, JANUARY, 1).datesUntil(LocalDate.of(year + 1, JANUARY, 1))
                         .map(date -> LenaCalendar.instance().scheduleOn(date))
                         .collect(toList());
     }
