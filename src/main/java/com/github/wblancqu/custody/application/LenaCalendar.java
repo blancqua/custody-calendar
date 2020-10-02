@@ -6,6 +6,7 @@ import static java.time.DayOfWeek.WEDNESDAY;
 import static java.time.Month.AUGUST;
 import static java.time.Month.DECEMBER;
 import static java.time.Month.JANUARY;
+import static java.time.Month.MAY;
 import static java.time.Month.SEPTEMBER;
 
 import com.github.wblancqu.custody.domain.CustodyCalendar;
@@ -15,6 +16,7 @@ import com.github.wblancqu.custody.domain.IntervalFixedOverride;
 import com.github.wblancqu.custody.domain.MothersDayRule;
 import com.github.wblancqu.custody.domain.SummerHolidaysRule;
 import com.github.wblancqu.custody.domain.WeeklyRule;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class LenaCalendar extends CustodyCalendar {
@@ -82,6 +84,10 @@ public class LenaCalendar extends CustodyCalendar {
     }
 
     private static WeeklyRule baseRule() {
-        return new WeeklyRule(WEDNESDAY, LocalTime.of(17, 30), DAD);
+        return new WeeklyRule(
+            LocalDate.of(2017, MAY, 29),
+            WEDNESDAY,
+            LocalTime.of(17, 30),
+            DAD);
     }
 }

@@ -23,11 +23,19 @@ class LenaCalendarTest {
 
     @Test
     void basicRule() {
+        assertEquals(calendar.scheduleOn(LocalDate.of(2019, JANUARY, 1)), fullDay(MOM));
         assertEquals(calendar.scheduleOn(LocalDate.of(2019, JANUARY, 2)), transitionDay(LocalTime.of(17, 30), DAD));
         assertEquals(calendar.scheduleOn(LocalDate.of(2019, JANUARY, 3)), fullDay(DAD));
         assertEquals(calendar.scheduleOn(LocalDate.of(2019, JANUARY, 8)), fullDay(DAD));
         assertEquals(calendar.scheduleOn(LocalDate.of(2019, JANUARY, 9)), transitionDay(LocalTime.of(17, 30), MOM));
         assertEquals(calendar.scheduleOn(LocalDate.of(2019, JANUARY, 10)), fullDay(MOM));
+    }
+
+    @Test
+    void basicRuleWith53Weeks() {
+        assertEquals(calendar.scheduleOn(LocalDate.of(2021, JANUARY, 2)), fullDay(DAD));
+        assertEquals(calendar.scheduleOn(LocalDate.of(2021, JANUARY, 3)), fullDay(DAD));
+        assertEquals(calendar.scheduleOn(LocalDate.of(2021, JANUARY, 4)), fullDay(DAD));
     }
 
     @Test
@@ -82,13 +90,13 @@ class LenaCalendarTest {
 
         assertEquals(calendar.scheduleOn(LocalDate.of(2020, DECEMBER, 30)), transitionDay(LocalTime.of(17, 30), DAD));
         assertEquals(calendar.scheduleOn(LocalDate.of(2020, DECEMBER, 31)), transitionDay(LocalTime.of(11, 00), MOM));
-        assertEquals(calendar.scheduleOn(LocalDate.of(2021, JANUARY, 1)), fullDay(MOM));
-        assertEquals(calendar.scheduleOn(LocalDate.of(2021, JANUARY, 2)), fullDay(MOM));
+        assertEquals(calendar.scheduleOn(LocalDate.of(2021, JANUARY, 1)), transitionDay(LocalTime.of(18, 00), DAD));
+        assertEquals(calendar.scheduleOn(LocalDate.of(2021, JANUARY, 2)), fullDay(DAD));
 
-        assertEquals(calendar.scheduleOn(LocalDate.of(2024, DECEMBER, 30)), fullDay(MOM));
-        assertEquals(calendar.scheduleOn(LocalDate.of(2024, DECEMBER, 31)), fullDay(MOM));
-        assertEquals(calendar.scheduleOn(LocalDate.of(2025, JANUARY, 1)), transitionDay(LocalTime.of(18, 00), DAD));
-        assertEquals(calendar.scheduleOn(LocalDate.of(2025, JANUARY, 2)), fullDay(DAD));
+        assertEquals(calendar.scheduleOn(LocalDate.of(2024, DECEMBER, 30)), fullDay(DAD));
+        assertEquals(calendar.scheduleOn(LocalDate.of(2024, DECEMBER, 31)), transitionDay(LocalTime.of(11, 00), MOM));
+        assertEquals(calendar.scheduleOn(LocalDate.of(2025, JANUARY, 1)), fullDay(MOM));
+        assertEquals(calendar.scheduleOn(LocalDate.of(2025, JANUARY, 2)), fullDay(MOM));
     }
 
     @Test
@@ -117,8 +125,8 @@ class LenaCalendarTest {
         assertEquals(calendar.scheduleOn(LocalDate.of(2020, AUGUST, 31)), fullDay(DAD));
         assertEquals(calendar.scheduleOn(LocalDate.of(2020, SEPTEMBER, 1)), fullDay(DAD));
 
-        assertEquals(calendar.scheduleOn(LocalDate.of(2021, AUGUST, 31)), fullDay(MOM));
-        assertEquals(calendar.scheduleOn(LocalDate.of(2021, SEPTEMBER, 1)), transitionDay(LocalTime.of(11, 00), DAD));
+        assertEquals(calendar.scheduleOn(LocalDate.of(2021, AUGUST, 31)), transitionDay(LocalTime.of(11, 00), MOM));
+        assertEquals(calendar.scheduleOn(LocalDate.of(2021, SEPTEMBER, 1)), fullDay(MOM));
     }
 
 }

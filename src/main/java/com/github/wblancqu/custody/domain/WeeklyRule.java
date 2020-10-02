@@ -2,7 +2,7 @@ package com.github.wblancqu.custody.domain;
 
 import static com.github.wblancqu.custody.domain.DaySchedule.fullDay;
 import static com.github.wblancqu.custody.domain.DaySchedule.transitionDay;
-import static java.time.Month.JANUARY;
+import static java.time.DayOfWeek.MONDAY;
 import static java.time.temporal.ChronoUnit.DAYS;
 
 import java.time.DayOfWeek;
@@ -11,11 +11,16 @@ import java.time.LocalTime;
 
 public class WeeklyRule implements BaseRule {
 
+    private final LocalDate startDate;
     private final DayOfWeek transitionDay;
     private final LocalTime transitionTime;
     private final Parent firstParent;
 
-    public WeeklyRule(final DayOfWeek transitionDay, final LocalTime transitionTime, final Parent firstParent) {
+    public WeeklyRule(final LocalDate startDate, final DayOfWeek transitionDay, final LocalTime transitionTime, final Parent firstParent) {
+        if (!DayOfWeek.from(startDate).equals(MONDAY)) {
+            throw new IllegalArgumentException("Please provide a Monday as start date");
+        }
+        this.startDate = startDate;
         this.transitionDay = transitionDay;
         this.transitionTime = transitionTime;
         this.firstParent = firstParent;
@@ -23,24 +28,24 @@ public class WeeklyRule implements BaseRule {
 
     @Override
     public DaySchedule scheduleOn(final LocalDate date) {
-        LocalDate firstTransitionDay = firstTransitionDayIn(date.getYear());
-        if (date.isBefore(firstTransitionDay)) {
-            return fullDay(firstParent.otherParent());
+        Parent parentAtBeginningOfWeek = parentAtBeginningOfWeek(date);
+        int dayOfWeek = date.getDayOfWeek().getValue();
+        if (dayOfWeek < transitionDay.getValue()) {
+            return fullDay(parentAtBeginningOfWeek);
+        } else if (dayOfWeek > transitionDay.getValue()) {
+            return fullDay(parentAtBeginningOfWeek.otherParent());
         } else {
-            long daysBetween = DAYS.between(firstTransitionDay, date);
-            long weeksAfterFirstTransitionDay = daysBetween / 7;
-            boolean isTransitionDay = daysBetween % 7 == 0;
-            Parent parentAtBeginningOfDay = weeksAfterFirstTransitionDay % 2 == 0 ? firstParent : firstParent.otherParent();
-            return isTransitionDay ? transitionDay(transitionTime, parentAtBeginningOfDay) : fullDay(parentAtBeginningOfDay);
+            return transitionDay(transitionTime, parentAtBeginningOfWeek.otherParent());
         }
     }
 
-    private LocalDate firstTransitionDayIn(final int year) {
-        LocalDate firstTransitionDay = LocalDate.of(year, JANUARY, 1);
-        while (!transitionDay.equals(firstTransitionDay.getDayOfWeek())) {
-            firstTransitionDay = firstTransitionDay.plusDays(1);
-        }
-        return firstTransitionDay;
+    private Parent parentAtBeginningOfWeek(final LocalDate date) {
+        return isAlternateWeek(date) ? firstParent.otherParent() : firstParent;
+    }
+
+    private boolean isAlternateWeek(final LocalDate date) {
+        // not basing on week number but on start of schedule to avoid leaps when years have 53 weeks
+        return DAYS.between(startDate, date) % 14 >= 7;
     }
 
 }
