@@ -1,10 +1,10 @@
-package com.github.wblancqu.custody.domain;
+package com.manzanita.custody.domain;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static com.github.wblancqu.custody.domain.DaySchedule.fullDay;
-import static com.github.wblancqu.custody.domain.DaySchedule.transitionDay;
+import static com.manzanita.custody.domain.DaySchedule.fullDay;
+import static com.manzanita.custody.domain.DaySchedule.transitionDay;
 import static java.time.DayOfWeek.MONDAY;
 import static java.time.Month.JULY;
 import static java.time.temporal.ChronoUnit.DAYS;
@@ -27,7 +27,7 @@ public class SummerHolidaysRule implements Rule {
     public boolean isApplicableOn(final LocalDate date) {
         LocalDate startDate = startDateIn(date.getYear());
         return date.isAfter(startDate.minusDays(1))
-               && date.isBefore(startDate.plusDays(29));
+                && date.isBefore(startDate.plusDays(29));
     }
 
     @Override

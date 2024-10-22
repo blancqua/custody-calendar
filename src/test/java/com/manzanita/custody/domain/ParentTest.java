@@ -1,9 +1,9 @@
-package com.github.wblancqu.custody.domain;
+package com.manzanita.custody.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static com.github.wblancqu.custody.domain.Parent.DAD;
-import static com.github.wblancqu.custody.domain.Parent.MOM;
+import static com.manzanita.custody.domain.Parent.DAD;
+import static com.manzanita.custody.domain.Parent.MOM;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ParentTest {

@@ -1,4 +1,4 @@
-package com.github.wblancqu.custody.domain;
+package com.manzanita.custody.domain;
 
 import java.time.LocalDate;
 import java.util.Objects;
@@ -15,7 +15,7 @@ public class Interval {
 
     public boolean contains(final LocalDate date) {
         return date.isAfter(startDate.minusDays(1)) &&
-               date.isBefore(endDate.plusDays(1));
+                date.isBefore(endDate.plusDays(1));
     }
 
     protected LocalDate getStartDate() {
@@ -30,9 +30,9 @@ public class Interval {
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        final Interval interval = (Interval)o;
+        final Interval interval = (Interval) o;
         return Objects.equals(startDate, interval.startDate) &&
-               Objects.equals(endDate, interval.endDate);
+                Objects.equals(endDate, interval.endDate);
     }
 
     @Override
@@ -43,9 +43,9 @@ public class Interval {
     @Override
     public String toString() {
         return "Interval{" +
-               "startDate=" + startDate +
-               ", endDate=" + endDate +
-               '}';
+                "startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
     }
 
 }

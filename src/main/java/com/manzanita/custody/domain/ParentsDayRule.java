@@ -1,10 +1,10 @@
-package com.github.wblancqu.custody.domain;
+package com.manzanita.custody.domain;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
 
-import static com.github.wblancqu.custody.domain.Dates.nthDayIn;
+import static com.manzanita.custody.domain.Dates.nthDayIn;
 import static java.time.DayOfWeek.SUNDAY;
 
 public abstract class ParentsDayRule extends IntervalOverride {

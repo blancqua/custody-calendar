@@ -1,4 +1,4 @@
-package com.github.wblancqu.custody;
+package com.manzanita.custody;
 
 import java.io.IOException;
 import java.util.Scanner;

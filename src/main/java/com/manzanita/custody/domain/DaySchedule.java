@@ -1,4 +1,4 @@
-package com.github.wblancqu.custody.domain;
+package com.manzanita.custody.domain;
 
 import java.time.LocalTime;
 import java.util.Objects;
@@ -31,14 +31,14 @@ public class DaySchedule {
 
     public DaySchedule transitionTo(final LocalTime transitionTime, final Parent parent) {
         return parent.equals(this.parentAtStartOfDay())
-               ? fullDay(parent)
-               : transitionDay(transitionTime, parent);
+                ? fullDay(parent)
+                : transitionDay(transitionTime, parent);
     }
 
     public DaySchedule transitionFrom(final LocalTime transitionTime, final Parent parent) {
         return parent.equals(this.parentAtEndOfDay())
-               ? fullDay(parent)
-               : transitionDay(transitionTime, parent.otherParent());
+                ? fullDay(parent)
+                : transitionDay(transitionTime, parent.otherParent());
 
     }
 
@@ -54,9 +54,9 @@ public class DaySchedule {
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        final DaySchedule that = (DaySchedule)o;
+        final DaySchedule that = (DaySchedule) o;
         return parentAtStartOfDay == that.parentAtStartOfDay &&
-               Objects.equals(transitionTime, that.transitionTime);
+                Objects.equals(transitionTime, that.transitionTime);
     }
 
     @Override
@@ -67,8 +67,8 @@ public class DaySchedule {
     @Override
     public String toString() {
         return "DaySchedule{" +
-               "parentAtStartOfDay=" + parentAtStartOfDay +
-               ", transitionTime=" + transitionTime +
-               '}';
+                "parentAtStartOfDay=" + parentAtStartOfDay +
+                ", transitionTime=" + transitionTime +
+                '}';
     }
 }

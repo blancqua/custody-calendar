@@ -1,11 +1,11 @@
-package com.github.wblancqu.custody.domain;
+package com.manzanita.custody.domain;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static com.github.wblancqu.custody.domain.DaySchedule.fullDay;
-import static com.github.wblancqu.custody.domain.DaySchedule.transitionDay;
+import static com.manzanita.custody.domain.DaySchedule.fullDay;
+import static com.manzanita.custody.domain.DaySchedule.transitionDay;
 import static java.time.DayOfWeek.MONDAY;
 import static java.time.temporal.ChronoUnit.DAYS;
 

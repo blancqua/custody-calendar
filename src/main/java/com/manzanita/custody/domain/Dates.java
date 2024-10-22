@@ -1,4 +1,4 @@
-package com.github.wblancqu.custody.domain;
+package com.manzanita.custody.domain;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -6,7 +6,8 @@ import java.time.Month;
 
 public final class Dates {
 
-    private Dates() {}
+    private Dates() {
+    }
 
     public static LocalDate nthDayIn(int year, Month month, int n, DayOfWeek dayOfWeek) {
         int occurences = 0;

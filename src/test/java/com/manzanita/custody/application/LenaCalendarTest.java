@@ -1,20 +1,20 @@
-package com.github.wblancqu.custody.application;
+package com.manzanita.custody.application;
 
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import static com.github.wblancqu.custody.domain.DaySchedule.fullDay;
-import static com.github.wblancqu.custody.domain.DaySchedule.transitionDay;
-import static com.github.wblancqu.custody.domain.Parent.DAD;
-import static com.github.wblancqu.custody.domain.Parent.MOM;
+import static com.manzanita.custody.domain.DaySchedule.fullDay;
+import static com.manzanita.custody.domain.DaySchedule.transitionDay;
+import static com.manzanita.custody.domain.Parent.DAD;
+import static com.manzanita.custody.domain.Parent.MOM;
 import static java.time.Month.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LenaCalendarTest {
 
-    private LenaCalendar calendar = LenaCalendar.instance();
+    private final LenaCalendar calendar = LenaCalendar.instance();
 
     @Test
     void basicRule() {

@@ -1,6 +1,6 @@
-package com.github.wblancqu.custody.domain;
+package com.manzanita.custody.domain;
 
-import static com.github.wblancqu.custody.domain.Parent.DAD;
+import static com.manzanita.custody.domain.Parent.DAD;
 import static java.time.Month.JUNE;
 
 public class FathersDayRule extends ParentsDayRule {

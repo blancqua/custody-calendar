@@ -1,8 +1,8 @@
-package com.github.wblancqu.custody;
+package com.manzanita.custody;
 
-import com.github.wblancqu.custody.application.LenaCalendar;
-import com.github.wblancqu.custody.domain.DaySchedule;
-import com.github.wblancqu.custody.domain.Parent;
+import com.manzanita.custody.application.LenaCalendar;
+import com.manzanita.custody.domain.DaySchedule;
+import com.manzanita.custody.domain.Parent;
 import net.fortuna.ical4j.data.CalendarOutputter;
 import net.fortuna.ical4j.model.Calendar;
 import net.fortuna.ical4j.model.TimeZone;
@@ -21,7 +21,7 @@ import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.github.wblancqu.custody.domain.Parent.DAD;
+import static com.manzanita.custody.domain.Parent.DAD;
 import static java.time.Month.JANUARY;
 import static java.time.ZoneId.systemDefault;
 import static java.util.stream.Collectors.toList;

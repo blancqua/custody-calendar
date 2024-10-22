@@ -1,10 +1,10 @@
-package com.github.wblancqu.custody.domain;
+package com.manzanita.custody.domain;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
 
-import static com.github.wblancqu.custody.domain.DaySchedule.fullDay;
+import static com.manzanita.custody.domain.DaySchedule.fullDay;
 
 public abstract class IntervalOverride implements Rule {
 
@@ -55,7 +55,9 @@ public abstract class IntervalOverride implements Rule {
     }
 
     protected abstract int getStartDayOfMonth(int year);
+
     protected abstract int getEndDayOfMonth(int year);
+
     protected abstract Parent beneficiaryParent(final LocalDate date);
 
 }

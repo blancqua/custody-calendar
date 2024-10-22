@@ -1,10 +1,10 @@
-package com.github.wblancqu.custody.domain;
+package com.manzanita.custody.domain;
 
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 
-import static com.github.wblancqu.custody.domain.Dates.nthDayIn;
+import static com.manzanita.custody.domain.Dates.nthDayIn;
 import static java.time.DayOfWeek.SUNDAY;
 import static java.time.Month.JUNE;
 import static java.time.Month.MAY;

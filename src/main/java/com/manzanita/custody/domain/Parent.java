@@ -1,4 +1,4 @@
-package com.github.wblancqu.custody.domain;
+package com.manzanita.custody.domain;
 
 public enum Parent {
 
