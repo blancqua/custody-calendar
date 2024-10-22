@@ -1,9 +1,9 @@
 package com.github.wblancqu.custody.domain;
 
-import static java.util.stream.Collectors.toList;
-
 import java.time.LocalDate;
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 public class CustodyCalendar {
 

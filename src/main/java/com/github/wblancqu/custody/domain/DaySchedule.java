@@ -1,7 +1,6 @@
 package com.github.wblancqu.custody.domain;
 
 import java.time.LocalTime;
-import java.time.ZonedDateTime;
 import java.util.Objects;
 
 public class DaySchedule {

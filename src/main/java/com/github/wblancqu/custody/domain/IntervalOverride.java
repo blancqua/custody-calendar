@@ -1,11 +1,10 @@
 package com.github.wblancqu.custody.domain;
 
-import static com.github.wblancqu.custody.domain.DaySchedule.fullDay;
-import static com.github.wblancqu.custody.domain.DaySchedule.transitionDay;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
+
+import static com.github.wblancqu.custody.domain.DaySchedule.fullDay;
 
 public abstract class IntervalOverride implements Rule {
 

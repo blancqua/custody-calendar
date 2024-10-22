@@ -1,18 +1,10 @@
 package com.github.wblancqu.custody;
 
-import static com.github.wblancqu.custody.domain.Parent.DAD;
-import static java.time.Month.JANUARY;
-import static java.time.ZoneId.systemDefault;
-import static java.util.stream.Collectors.toList;
-import static net.fortuna.ical4j.model.property.CalScale.GREGORIAN;
-import static net.fortuna.ical4j.model.property.Version.VERSION_2_0;
-
 import com.github.wblancqu.custody.application.LenaCalendar;
 import com.github.wblancqu.custody.domain.DaySchedule;
 import com.github.wblancqu.custody.domain.Parent;
 import net.fortuna.ical4j.data.CalendarOutputter;
 import net.fortuna.ical4j.model.Calendar;
-import net.fortuna.ical4j.model.DateTime;
 import net.fortuna.ical4j.model.TimeZone;
 import net.fortuna.ical4j.model.TimeZoneRegistry;
 import net.fortuna.ical4j.model.TimeZoneRegistryFactory;
@@ -21,13 +13,20 @@ import net.fortuna.ical4j.model.property.ProdId;
 import net.fortuna.ical4j.model.property.TzId;
 import net.fortuna.ical4j.util.RandomUidGenerator;
 import net.fortuna.ical4j.util.UidGenerator;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.github.wblancqu.custody.domain.Parent.DAD;
+import static java.time.Month.JANUARY;
+import static java.time.ZoneId.systemDefault;
+import static java.util.stream.Collectors.toList;
+import static net.fortuna.ical4j.model.property.immutable.ImmutableCalScale.GREGORIAN;
+import static net.fortuna.ical4j.model.property.immutable.ImmutableVersion.VERSION_2_0;
 
 public final class LenaCalendarGenerator {
 
@@ -38,10 +37,11 @@ public final class LenaCalendarGenerator {
     static {
         TimeZoneRegistry registry = TimeZoneRegistryFactory.getInstance().createRegistry();
         TimeZone timezone = registry.getTimeZone(systemDefault().getId());
-        TIME_ZONE_ID = timezone.getVTimeZone().getTimeZoneId();
+        TIME_ZONE_ID = timezone.getVTimeZone().getTimeZoneId().get();
     }
 
-    private LenaCalendarGenerator() {}
+    private LenaCalendarGenerator() {
+    }
 
     public static LenaCalendarGenerator instance() {
         return INSTANCE;
@@ -82,20 +82,16 @@ public final class LenaCalendarGenerator {
 
     private List<DaySchedule> daySchedulesIn(final int year) {
         return LocalDate.of(year, JANUARY, 1).datesUntil(LocalDate.of(year + 1, JANUARY, 1))
-                        .map(date -> LenaCalendar.instance().scheduleOn(date))
-                        .collect(toList());
+                .map(date -> LenaCalendar.instance().scheduleOn(date))
+                .collect(toList());
     }
 
     private VEvent event(final ZonedDateTime startDatetime, final Parent parent,
                          final ZonedDateTime endDateTime) {
-        VEvent event = new VEvent(icalDateTime(startDatetime), icalDateTime(endDateTime), "Lena (" + (DAD.equals(parent) ? "Wouter" : "Sofie") + ")");
+        VEvent event = new VEvent(startDatetime, endDateTime, "Lena (" + (DAD.equals(parent) ? "Wouter" : "Sofie") + ")");
         event.getProperties().add(TIME_ZONE_ID);
         event.getProperties().add(UID_GENERATOR.generateUid());
         return event;
-    }
-
-    private DateTime icalDateTime(final ZonedDateTime datetime) {
-        return new DateTime(Date.from(datetime.toInstant()));
     }
 
     private void writeFile(final Calendar icsCalendar, final String fileName) throws IOException {

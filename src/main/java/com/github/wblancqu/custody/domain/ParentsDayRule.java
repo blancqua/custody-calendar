@@ -1,11 +1,11 @@
 package com.github.wblancqu.custody.domain;
 
-import static com.github.wblancqu.custody.domain.Dates.nthDayIn;
-import static java.time.DayOfWeek.SUNDAY;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
+
+import static com.github.wblancqu.custody.domain.Dates.nthDayIn;
+import static java.time.DayOfWeek.SUNDAY;
 
 public abstract class ParentsDayRule extends IntervalOverride {
 

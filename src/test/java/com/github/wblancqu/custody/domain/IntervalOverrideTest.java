@@ -1,15 +1,14 @@
 package com.github.wblancqu.custody.domain;
 
-import static com.github.wblancqu.custody.domain.Parent.MOM;
-import static java.time.LocalTime.NOON;
-import static java.time.Month.AUGUST;
-import static java.time.Month.DECEMBER;
-import static java.time.Month.JANUARY;
-import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
+
 import java.time.LocalDate;
 import java.time.Month;
+
+import static com.github.wblancqu.custody.domain.Parent.MOM;
+import static java.time.LocalTime.NOON;
+import static java.time.Month.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 class IntervalOverrideTest {
 

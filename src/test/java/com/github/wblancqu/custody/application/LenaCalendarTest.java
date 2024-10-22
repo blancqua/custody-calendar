@@ -1,21 +1,16 @@
 package com.github.wblancqu.custody.application;
 
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import static com.github.wblancqu.custody.domain.DaySchedule.fullDay;
 import static com.github.wblancqu.custody.domain.DaySchedule.transitionDay;
 import static com.github.wblancqu.custody.domain.Parent.DAD;
 import static com.github.wblancqu.custody.domain.Parent.MOM;
-import static java.time.Month.AUGUST;
-import static java.time.Month.DECEMBER;
-import static java.time.Month.JANUARY;
-import static java.time.Month.JULY;
-import static java.time.Month.JUNE;
-import static java.time.Month.MAY;
-import static java.time.Month.SEPTEMBER;
+import static java.time.Month.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.jupiter.api.Test;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 class LenaCalendarTest {
 

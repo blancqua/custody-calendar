@@ -1,13 +1,13 @@
 package com.github.wblancqu.custody.domain;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import static com.github.wblancqu.custody.domain.DaySchedule.fullDay;
 import static com.github.wblancqu.custody.domain.DaySchedule.transitionDay;
 import static java.time.DayOfWeek.MONDAY;
 import static java.time.temporal.ChronoUnit.DAYS;
-
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 public class WeeklyRule implements BaseRule {
 

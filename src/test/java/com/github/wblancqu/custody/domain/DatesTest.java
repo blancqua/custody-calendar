@@ -1,13 +1,14 @@
 package com.github.wblancqu.custody.domain;
 
+import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
+
 import static com.github.wblancqu.custody.domain.Dates.nthDayIn;
 import static java.time.DayOfWeek.SUNDAY;
 import static java.time.Month.JUNE;
 import static java.time.Month.MAY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.jupiter.api.Test;
-import java.time.LocalDate;
 
 class DatesTest {
 

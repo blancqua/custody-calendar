@@ -1,23 +1,14 @@
 package com.github.wblancqu.custody.application;
 
+import com.github.wblancqu.custody.domain.*;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
 import static com.github.wblancqu.custody.domain.Parent.DAD;
 import static com.github.wblancqu.custody.domain.Parent.MOM;
 import static java.time.DayOfWeek.WEDNESDAY;
-import static java.time.Month.AUGUST;
-import static java.time.Month.DECEMBER;
-import static java.time.Month.JANUARY;
-import static java.time.Month.MAY;
-import static java.time.Month.SEPTEMBER;
-
-import com.github.wblancqu.custody.domain.CustodyCalendar;
-import com.github.wblancqu.custody.domain.FathersDayRule;
-import com.github.wblancqu.custody.domain.IntervalAlternatingOverride;
-import com.github.wblancqu.custody.domain.IntervalFixedOverride;
-import com.github.wblancqu.custody.domain.MothersDayRule;
-import com.github.wblancqu.custody.domain.SummerHolidaysRule;
-import com.github.wblancqu.custody.domain.WeeklyRule;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import static java.time.Month.*;
 
 public class LenaCalendar extends CustodyCalendar {
 
